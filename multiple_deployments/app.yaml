@@ -1,1 +1,23 @@
-# Write your code here
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  selector:
+    matchLabels:
+      project: kubernetes-project
+      tier: frontend
+      app: application
+  template:
+    metadata:
+      labels:
+        project: kubernetes-project
+        tier: frontend
+        app: application
+    spec: 
+      containers:
+      - image: manojmeruva/elearningbaseapp
+        name: app-pod
+        ports:
+          - containerPort: 3000
+        imagePullPolicy: Always
